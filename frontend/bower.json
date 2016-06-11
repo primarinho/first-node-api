@@ -1,0 +1,17 @@
+{
+  "name": "Pokedex",
+  "description": "A Pokemon API Frontend",
+  "main": "",
+  "authors": [
+    "Priscila Marinho"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

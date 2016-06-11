@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pokemonApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokedex</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,300italic,700,600,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/font-awesome-4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/sticky-footer.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="assets/js/pokemon.js"></script>
+</head>
+<body ng-controller="PokemonListController">
+  <div class="container">
+    <div class="page-header">
+      <h1><em>Gotta Catch 'Em All <strong>Pokemon!</strong></em></h1>
+    </div>
+    <p class="lead center">A list of Pokemons I love.</p>
+
+    <div class="form-group">
+      <label for="search">Search Pokemon:</label>
+      <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+        <input type="text" class="form-control input-lg" id="search" placeholder="Search..." ng-model="search.name">
+      </div>
+    </div>
+
+    <ul>
+      <li ng-repeat="pokemon in pokemons|filter:search" class="pokemonbox">
+        <img width="200" src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pokemon.id}}.png" />
+        <ul>
+          <li><strong>Nº:</strong> #{{pokemon.id}}</li>
+          <li><strong>Name:</strong> {{pokemon.name}}</li>
+          <li><strong>Type:</strong> {{pokemon.type}}</li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">Made with <i class="fa fa-heart-o heart" aria-hidden="true"></i> by: <strong>Priscila Marinho</strong></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+.center {
+  text-align: center;
+}
+.pokemonbox {
+  display: inline-block;
+  width: 100%;
+  max-width: 250px;
+  background: #f9f9f9; 
+  margin: 10px; 
+  padding: 5px; 
+  border-radius: 10px;
+}
+.pokemonbox li strong {
+  font-size: 18px;
+  color: #777;
+}
+ul li {
+  list-style-type: none;
+  font-size: 15px;
+}
+.pokemonbox img {
+  margin: auto;
+  display: block;
+}
+
+.heart {
+  color: red;
+}
