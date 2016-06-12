@@ -5,31 +5,34 @@ router.get('/api/pokemons', function (req, res) {
   var pokemons = [{
     id: '001'
     ,name: 'Bulbasaur'
-    ,type: 'Grass'
+    ,types: ['Grass', 'Poison']
   },{
     id: '004'
     ,name: 'Charmander'
-    ,type: 'Fire'
+    ,types: ['Fire']
   },{
     id: '007'
     ,name: 'Squirtle'
-    ,type: 'Water'
+    ,types: ['Water']
   },{
     id: '010'
     ,name: 'Caterpie'
-    ,type: 'Bug'
+    ,types: ['Bug']
   },{
     id: '013'
     ,name: 'Weedle'
-    ,type: 'Bug'
+    ,types: ['Bug', 'Poison']
   },{
     id: '016'
     ,name: 'Pidgey'
-    ,type: 'Normal'
+    ,types: ['Normal', 'Flying']
   }];
 
   res.json(pokemons);
+});
 
+router.post('/api/pokemons', function (req, res) {
+  res.json(req.body);
 });
 
 module.exports = router;

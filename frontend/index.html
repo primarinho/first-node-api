@@ -2,14 +2,19 @@
 <html lang="en" ng-app="pokemonApp">
 <head>
   <meta charset="UTF-8">
-  <title>Pokedex</title>
+  <title>Gotta Catch 'Em All Pokemon!</title>
+  <meta name=viewport content="width=device-width,initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,300italic,700,600,700italic' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="assets/img/pokeball.png">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/font-awesome-4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/sticky-footer.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/app.css">
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="assets/js/pokemon.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body ng-controller="PokemonListController">
   <div class="container">
@@ -18,24 +23,171 @@
     </div>
     <p class="lead center">A list of Pokemons I love.</p>
 
-    <div class="form-group">
-      <label for="search">Search Pokemon:</label>
+    <div class="form-group col-lg-6">
       <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-        <input type="text" class="form-control input-lg" id="search" placeholder="Search..." ng-model="search.name">
+        <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+        <input type="text" class="form-control input-lg" id="search" placeholder="Search Pokemon..." ng-model="search.name">
       </div>
     </div>
 
+    <div class="form-group col-lg-6">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+        <input type="text" class="form-control input-lg" id="search" placeholder="Search Types..." ng-model="search.types">
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block btn-custom" data-toggle="modal" data-target="#createModal">Create New Pokemon</button>
+
     <ul>
       <li ng-repeat="pokemon in pokemons|filter:search" class="pokemonbox">
-        <img width="200" src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pokemon.id}}.png" />
+        <img width="170" class="animated bounceIn" ng-src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pokemon.id}}.png" />
         <ul>
           <li><strong>Nº:</strong> #{{pokemon.id}}</li>
           <li><strong>Name:</strong> {{pokemon.name}}</li>
-          <li><strong>Type:</strong> <span class="label {{pokemon.type}}">{{pokemon.type}}</span></li>
+          <li><strong>Type:</strong> <span ng-repeat="type in pokemon.types" class="label {{type}}">{{type}}</span></li>
         </ul>
       </li>
     </ul>
+
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="createModal">Create New Pokemon</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="pokemonId">Pokemon Nº:</label>
+                <input type="text" class="form-control" ng-model="form.pokemon.Id" id="pokemonId" placeholder="Type pokemon number...">
+              </div>
+              <div class="form-group">
+                <label for="pokemonName">Pokemon Name:</label>
+                <input type="text" class="form-control" ng-model="form.pokemon.Name" id="pokemonName" placeholder="Type pokemon name...">
+              </div>
+              <div class="form-group">
+                <p>
+                  <label for="pokemonType">Pokemon Types:</label>
+                </p>
+
+                <p>
+                  <label class="checkbox-inline">
+                    <span class="label Normal">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Normal" value="Normal"> Normal
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Fighting">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Fighting" value="Fighting"> Fighting
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Flying">
+                      <input type="checkbox"  ng-model="form.pokemon.Types.Flying" value="Flying"> Flying
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Poison">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Poison" value="Poison"> Poison
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Rock">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Rock" value="Rock"> Rock
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Bug">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Bug" value="Bug"> Bug
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Ghost">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Ghost" value="Ghost"> Ghost
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Steel">
+                      <input type="checkbox" ng-model="form.pokemon.Types.Steel" value="Steel"> Steel
+                    </span>
+                  </label>
+                </p>
+
+                <p>
+                  <label class="checkbox-inline">
+                    <span class="label Fire">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Fire" value="Fire"> Fire
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Water">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Water" value="Water"> Water
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Grass">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Grass" value="Grass"> Grass
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Electric">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Electric" value="Electric"> Electric
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Psychic">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Psychic" value="Psychic"> Psychic
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Ice">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Ice" value="Ice"> Ice
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Dragon">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Dragon" value="Dragon"> Dragon
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Dark">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Dark" value="Dark"> Dark
+                    </span>
+                  </label>
+
+                  <label class="checkbox-inline">
+                    <span class="label Fairy">
+                    <input type="checkbox" ng-model="form.pokemon.Types.Fairy" value="Fairy"> Fairy
+                    </span>
+                  </label>
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="createPokemon()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 

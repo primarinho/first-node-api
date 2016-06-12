@@ -10,17 +10,29 @@ body {
   max-width: 250px;
   background: #f9f9f9; 
   margin: 10px; 
-  padding: 5px; 
+  padding: 20px; 
   border-radius: 10px;
 }
 .pokemonbox li strong {
   font-size: 18px;
   color: #777;
 }
+
 ul li {
   list-style-type: none;
   font-size: 15px;
 }
+
+ul {
+  margin-left: -45px;
+  text-align: center;
+}
+
+li {
+  margin-left: 45px;
+  text-align: left;
+}
+
 .pokemonbox img {
   margin: auto;
   display: block;
@@ -30,9 +42,34 @@ ul li {
   color: red;
 }
 
+.btn-custom {
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 841px;
+}
+
+.checkbox label {
+  padding-right: 5px;
+}
+
 /* Pokemons type */
-.Grass {background-color: #9bcc50;}
-.Fire {background-color: #fd7d24;}
-.Bug {background-color: #729f3f;}
-.Water {background-color: #4592c4;}
-.Normal {background-color: #a4acaf;}
+.Grass {background-color: #78C850; margin: 2px;}
+.Fire {background-color: #F08030; margin: 2px;}
+.Bug {background-color: #A8B820; margin: 2px;}
+.Water {background-color: #6890F0; margin: 2px;}
+.Normal {background-color: #A8A878; margin: 2px;}
+.Poison {background-color: #A040A0; margin: 2px;}
+.Flying {background-color: #A890F0; margin: 2px;}
+.Fighting {background-color: #C03028; margin: 2px;}
+.Ground {background-color: #E0C068; margin: 2px;}
+.Rock {background-color: #B8A038; margin: 2px;}
+.Ghost {background-color: #705898; margin: 2px;}
+.Steel {background-color: #B8B8D0; margin: 2px;}
+.Electric {background-color: #F8D030; margin: 2px;}
+.Psychic {background-color: #F85888; margin: 2px;}
+.Ice {background-color: #98D8D8; margin: 2px;}
+.Dragon {background-color: #7038F8; margin: 2px;}
+.Dark {background-color: #705848; margin: 2px;}
+.Fairy {background-color: #EE99AC; margin: 2px;}
